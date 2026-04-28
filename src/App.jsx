@@ -1,122 +1,155 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
+import { useEffect, useState } from "react";
+import "./App.css";
+import { Route, Routes } from "react-router-dom";
+import HomePage from "./pages/HomePage";
+import SideBar from "./components/SideBar";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import CocktailList from "./pages/CocktailList";
+import CocktailDetail from "./pages/CocktailDetail";
+import YourTable from "./pages/YourTable";
+import AddCocktail from "./pages/AddCocktail";
+import EditCocktail from "./pages/EditCocktail";
+import AboutPage from "./pages/AboutPage";
+import NotFoundPage from "./pages/NotFoundPage";
+import axios from "axios";
+import GetRandomCocktail from "./pages/GetRandomCocktail";
+import { API_URL } from "./config";
+import { useNavigate } from "react-router-dom";
+import ProfilePage from "./pages/ProfilePage";
+import Login from "./components/Login";
+import Signup from "./components/Signup";
+import UserCocktail from "./pages/UserCocktail";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [cocktails, setCocktails] = useState([]);
+  const [orderedCocktails, setOrderedCockails] = useState([]);
+  const [currentUser, setCurrentUser] = useState(null);
+  const [mood, setMood] = useState("");
+  const nav = useNavigate();
+
+  useEffect(() => {
+    const fetchCocktails = async () => {
+      try {
+        const { data } = await axios.get(`${API_URL}/drinks`);
+        setCocktails(data.reverse());
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchCocktails();
+  }, []);
+
+  useEffect(() => {
+    const checkLoggedInUser = async () => {
+      try {
+        const { data } = await axios.get(`${API_URL}/users`);
+        setCurrentUser(data.user);
+      } catch (error) {
+        setCurrentUser(null);
+      }
+    };
+    checkLoggedInUser();
+  }, []);
+
+  function handleOrder(cocktail) {
+    setOrderedCockails([...orderedCocktails, cocktail]);
+  }
+
+  const handleDelete = async (id) => {
+    try {
+      await axios.delete(`${API_URL}/drinks/${id}`);
+      setCocktails(cocktails.filter((cocktail) => cocktail.id !== id));
+      setOrderedCockails(
+        orderedCocktails.filter((cocktail) => cocktail.id !== id),
+      );
+      nav("/cocktails");
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+      <Navbar currentUser={currentUser} />
+      <div className="body-page">
+        <SideBar currentUser={currentUser} />
 
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <div className="ticks"></div>
-      <section id="spacer"></section>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <HomePage
+                currentUser={currentUser}
+                mood={mood}
+                setMood={setMood}
+              />
+            }
+          />
+          <Route
+            path="/cocktails"
+            element={
+              <CocktailList cocktails={cocktails} setCocktails={setCocktails} />
+            }
+          />
+          <Route
+            path="/cocktails/:cocktailId"
+            element={
+              <CocktailDetail
+                cocktails={cocktails}
+                handleOrder={handleOrder}
+                handleDelete={handleDelete}
+                orderedCocktails={orderedCocktails}
+              />
+            }
+          />
+          <Route
+            path="/your-table"
+            element={<YourTable orderedCocktails={orderedCocktails} />}
+          />
+          <Route
+            path="/add-cocktail"
+            element={
+              <AddCocktail
+                cocktails={cocktails}
+                setCocktails={setCocktails}
+                currentUser={currentUser}
+              />
+            }
+          />
+          <Route
+            path="/random-cocktail"
+            element={<GetRandomCocktail mood={mood} />}
+          />
+          <Route
+            path="/edit-cocktail/:cocktailId"
+            element={
+              <EditCocktail cocktails={cocktails} setCocktails={setCocktails} />
+            }
+          />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="*" element={<NotFoundPage />} />
+          <Route
+            path="/profile"
+            element={<ProfilePage currentUser={currentUser} />}
+          />
+          <Route
+            path="/login"
+            element={<Login setCurrentUser={setCurrentUser} />}
+          />
+          <Route
+            path="/signup"
+            element={<Signup setCurrentUser={setCurrentUser} />}
+          />
+          <Route
+            path="/cocktails-for-you"
+            element={<UserCocktail currentUser={currentUser} />}
+          />
+        </Routes>
+      </div>
+      <Footer />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
