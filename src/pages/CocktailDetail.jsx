@@ -2,12 +2,11 @@ import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import CocktailCard from "../components/CocktailCard";
 
-const CocktailDetail = ({ cocktails, handleOrder, orderedCocktails, handleDelete}) => {
+const CocktailDetail = ({ cocktails, searchResults, handleOrder, orderedCocktails, handleDelete}) => {
   const { cocktailId } = useParams();
-  const filteredCocktail = cocktails.find((oneCocktail) => {
-    if (oneCocktail.id == cocktailId) {
-      return true;
-    }
+  const allCocktails = [...cocktails, ...(searchResults || [])];
+  const filteredCocktail = allCocktails.find((oneCocktail) => {
+    return oneCocktail.idDrink === cocktailId || oneCocktail.id === cocktailId;
   });
 
   if (!filteredCocktail) {

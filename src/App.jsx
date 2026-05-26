@@ -23,6 +23,7 @@ import UserCocktail from "./pages/UserCocktail";
 
 function App() {
   const [cocktails, setCocktails] = useState([]);
+  const [searchResults, setSearchResults] = useState([]);
   const [orderedCocktails, setOrderedCockails] = useState([]);
   const [currentUser, setCurrentUser] = useState(null);
   const [mood, setMood] = useState("");
@@ -97,6 +98,7 @@ function App() {
             element={
               <CocktailDetail
                 cocktails={cocktails}
+                searchResults={searchResults}
                 handleOrder={handleOrder}
                 handleDelete={handleDelete}
                 orderedCocktails={orderedCocktails}

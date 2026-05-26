@@ -65,16 +65,6 @@ const CocktailList = ({ cocktails, setCocktails }) => {
             );
           }))}
       </div>
-
-      {/* <div className="cocktail-list-grid user-cocktail-list">
-        {(cocktails.map((oneCocktail) => {
-          return (
-            <Link to={`/cocktails/${oneCocktail.id}`} key={oneCocktail.id}>
-              <CocktailCard cocktail={oneCocktail} />
-            </Link>
-          );
-        }))}
-      </div> */}
     </div>
   );
 };
