@@ -6,7 +6,7 @@ const CocktailDetail = ({ cocktails, searchResults, handleOrder, orderedCocktail
   const { cocktailId } = useParams();
   const allCocktails = [...cocktails, ...(searchResults || [])];
   const filteredCocktail = allCocktails.find((oneCocktail) => {
-    return oneCocktail.idDrink === cocktailId || oneCocktail.id === cocktailId;
+    return oneCocktail.idDrink == cocktailId || oneCocktail.id == cocktailId;
   });
 
   if (!filteredCocktail) {
