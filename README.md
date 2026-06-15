@@ -5,6 +5,7 @@ Mood Cocktails Bar is a React cocktail app that recommends drinks based on your 
 ## Live Demo
 
 [https://moody-cocktails-bar.netlify.app/](https://moody-cocktails-bar.netlify.app/)
+<img width="695" height="517" alt="image" src="https://github.com/user-attachments/assets/e7bfce06-81b7-48f0-9f2c-07348e515401" />
 
 ## Features
 
@@ -43,31 +44,4 @@ cd mood-cocktails-frontend-v2
 npm install
 ```
 
-## Project Structure
-src/
-├── assets/
-├── components/
-│   ├── CocktailCard.jsx
-│   ├── Footer.jsx
-│   ├── Login.jsx
-│   ├── Navbar.jsx
-│   ├── ScrollToTop.jsx
-│   ├── SideBar.jsx
-│   └── Signup.jsx
-├── image/
-├── pages/
-│   ├── AboutPage.jsx
-│   ├── AddCocktail.jsx
-│   ├── CocktailDetail.jsx
-│   ├── CocktailList.jsx
-│   ├── EditCocktail.jsx
-│   ├── GetRandomCocktail.jsx
-│   ├── HomePage.jsx
-│   ├── NotFoundPage.jsx
-│   ├── ProfilePage.jsx
-│   ├── UserCocktail.jsx
-│   └── YourTable.jsx
-├── App.jsx
-├── config.js
-├── index.css
-└── main.jsx
+
