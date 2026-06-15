@@ -41,3 +41,32 @@ Make sure you have Node.js and npm installed.
 git clone https://github.com/farnoushdf/mood-cocktails-frontend-v2.git
 cd mood-cocktails-frontend-v2
 npm install
+
+## Project Structure
+src/
+├── assets/
+├── components/
+│   ├── CocktailCard.jsx
+│   ├── Footer.jsx
+│   ├── Login.jsx
+│   ├── Navbar.jsx
+│   ├── ScrollToTop.jsx
+│   ├── SideBar.jsx
+│   └── Signup.jsx
+├── image/
+├── pages/
+│   ├── AboutPage.jsx
+│   ├── AddCocktail.jsx
+│   ├── CocktailDetail.jsx
+│   ├── CocktailList.jsx
+│   ├── EditCocktail.jsx
+│   ├── GetRandomCocktail.jsx
+│   ├── HomePage.jsx
+│   ├── NotFoundPage.jsx
+│   ├── ProfilePage.jsx
+│   ├── UserCocktail.jsx
+│   └── YourTable.jsx
+├── App.jsx
+├── config.js
+├── index.css
+└── main.jsx
