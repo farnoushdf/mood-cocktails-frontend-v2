@@ -1,16 +1,43 @@
-# React + Vite
+# Mood Cocktails Bar
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Mood Cocktails Bar is a React cocktail app that recommends drinks based on your mood, lets users browse and search cocktails, create their own cocktail recipes, and keep track of drinks they want to order.
 
-Currently, two official plugins are available:
+## Live Demo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+[https://moody-cocktails-bar.netlify.app/](https://moody-cocktails-bar.netlify.app/)
 
-## React Compiler
+## Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Mood-based random cocktail recommendation
+- Cocktail menu with searchable drinks
+- Cocktail detail pages
+- Order drinks and view them on “Your Table”
+- User signup and login
+- User profile editing
+- Logged-in users can create custom cocktails
+- User-created cocktails can be edited and deleted
+- Personalized cocktail suggestions based on username
+- About page with creator information
+- Data from both a custom backend API and [TheCocktailDB](https://www.thecocktaildb.com/)
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- React
+- Vite
+- React Router
+- Axios
+- CSS
+- Netlify
+
+## Getting Started
+
+### Prerequisites
+
+Make sure you have Node.js and npm installed.
+
+### Installation
+
+```bash
+git clone https://github.com/farnoushdf/mood-cocktails-frontend-v2.git
+cd mood-cocktails-frontend-v2
+npm install
