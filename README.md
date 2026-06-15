@@ -5,7 +5,10 @@ Mood Cocktails Bar is a React cocktail app that recommends drinks based on your 
 ## Live Demo
 
 [https://moody-cocktails-bar.netlify.app/](https://moody-cocktails-bar.netlify.app/)
-<img width="695" height="517" alt="image" src="https://github.com/user-attachments/assets/e7bfce06-81b7-48f0-9f2c-07348e515401" />
+
+## Demo
+
+<img width="600"  alt="image" src="https://github.com/user-attachments/assets/e7bfce06-81b7-48f0-9f2c-07348e515401"  />
 
 ## Features
 
