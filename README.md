@@ -41,6 +41,7 @@ Make sure you have Node.js and npm installed.
 git clone https://github.com/farnoushdf/mood-cocktails-frontend-v2.git
 cd mood-cocktails-frontend-v2
 npm install
+```
 
 ## Project Structure
 src/
