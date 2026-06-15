@@ -8,7 +8,7 @@ Mood Cocktails Bar is a React cocktail app that recommends drinks based on your 
 
 ## Demo
 
-<img width="600"  alt="image" src="https://github.com/user-attachments/assets/e7bfce06-81b7-48f0-9f2c-07348e515401"  />
+<img width="400" height="250" alt="image" src="https://github.com/user-attachments/assets/e7bfce06-81b7-48f0-9f2c-07348e515401"  />
 
 ## Features
 
